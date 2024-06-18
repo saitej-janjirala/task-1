@@ -56,7 +56,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Task1Theme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -118,13 +117,13 @@ class MainActivity : ComponentActivity() {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(MaterialTheme.colorScheme.primary) // Custom color for sticky header
+                            .background(MaterialTheme.colorScheme.primary)
                     ) {
                         Text(
                             text = "List ID: $listId",
                             style = MaterialTheme.typography.headlineSmall,
                             color = MaterialTheme.colorScheme.onPrimary,
-                            modifier = Modifier.padding(paddingValues = PaddingValues(horizontal = 8.dp)) // Padding for the text inside sticky header
+                            modifier = Modifier.padding(paddingValues = PaddingValues(horizontal = 8.dp))
                         )
                     }
                 }
@@ -134,7 +133,7 @@ class MainActivity : ComponentActivity() {
                             .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f ))
                     ){
                         ItemCard(item)
-                        Divider(color = Color.White, thickness = 1.dp) // Divider between cards
+                        Divider(color = Color.White, thickness = 1.dp)
                     }
                 }
             }
