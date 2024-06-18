@@ -26,23 +26,7 @@ This App follows combination of  MVVM (Model-View-ViewModel) architecture and Cl
 
 # ClEAN ARCHITECTURE
 
-├── data
-│ ├── repository
-│ └── source
-│ ├── local
-│ │ ├── datastore
-│ │ └── roomdb
-│ └── remote
-├── di
-│ ├── movies
-│ └── moviedetails
-├── domain
-│ ├── model
-│ ├── repository
-│ └── usecase
-└── presentation
-├── ui
-└── viewmodel
+![CLEAN ARCHITECTURE](media/cleanarch.png)
 
 ## GIF
 
