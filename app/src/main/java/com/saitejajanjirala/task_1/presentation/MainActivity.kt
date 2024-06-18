@@ -58,7 +58,7 @@ class MainActivity : ComponentActivity() {
             Task1Theme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.surface
                 ) {
                     ItemListScreen()
                 }
@@ -87,7 +87,7 @@ class MainActivity : ComponentActivity() {
             Box(modifier = Modifier.padding(paddingValues)) {
                 when (val result = itemsResult) {
                     is Result.Loading -> LoadingView()
-                    is Result.Success -> result.data?.let { ItemList(it) }
+                    is Result.Success -> result.data?.let { ItemList(it.groupedItems) }
                     is Result.Error -> ErrorView(result.message)
                 }
             }
@@ -130,7 +130,7 @@ class MainActivity : ComponentActivity() {
                 items(items) { item ->
                     Column (
                         modifier = Modifier.fillMaxWidth()
-                            .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f ))
+
                     ){
                         ItemCard(item)
                         Divider(color = Color.White, thickness = 1.dp)

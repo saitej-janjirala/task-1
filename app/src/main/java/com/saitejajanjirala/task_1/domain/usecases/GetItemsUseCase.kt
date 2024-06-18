@@ -1,5 +1,6 @@
 package com.saitejajanjirala.task_1.domain.usecases
 
+import com.saitejajanjirala.task_1.domain.models.GroupedItemsWrapper
 import com.saitejajanjirala.task_1.domain.models.Item
 import com.saitejajanjirala.task_1.domain.models.Result
 import com.saitejajanjirala.task_1.domain.repository.ItemRepository
@@ -10,7 +11,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class GetItemsUseCase (private val itemRepository: ItemRepository) {
-    operator fun invoke(): Flow<Result<SortedMap<String, List<Item>>>> = flow<Result<SortedMap<String, List<Item>>>> {
+    operator fun invoke(): Flow<Result<GroupedItemsWrapper>> = flow {
         itemRepository.getItems().collect { result ->
             when (result) {
                 is Result.Loading -> emit(Result.Loading())
@@ -21,7 +22,7 @@ class GetItemsUseCase (private val itemRepository: ItemRepository) {
                     val sortedGroupedItems = groupedItems.mapValues { (_, items) ->
                         items.sortedWith(compareBy(NaturalOrderComparator(), { it.name!! }))
                     }.toSortedMap()
-                    emit(Result.Success(sortedGroupedItems))
+                    emit(Result.Success(GroupedItemsWrapper(sortedGroupedItems)))
                 }
             }
         }
